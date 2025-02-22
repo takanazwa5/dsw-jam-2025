@@ -149,7 +149,7 @@ script = ExtResource("1_6nbeu")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_outx6")
-animation = &"jumping"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="RunningCollision" type="CollisionShape2D" parent="."]

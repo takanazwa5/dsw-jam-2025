@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 
 	var direction : float = Input.get_axis("walk_left", "walk_right")
 	velocity.x = direction * SPEED if can_move else 0.0
+	position.x = clampf(position.x, 100, 500)
 
 	move_and_slide()
 
