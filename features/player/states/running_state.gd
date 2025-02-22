@@ -11,6 +11,7 @@ class_name RunningState extends State
 func enter() -> void:
 
 	sprite.play(&"running")
+	running_collision.set_deferred("disabled", false)
 
 
 func input_event(event: InputEvent) -> void:
@@ -27,3 +28,8 @@ func input_event(event: InputEvent) -> void:
 func update(_delta: float) -> void:
 
 	sprite.speed_scale = clampf(Main.level.chunk_speed / 100.0, 1, 3)
+
+
+func exit() -> void:
+
+	running_collision.set_deferred("disabled", true)

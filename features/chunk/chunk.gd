@@ -15,7 +15,8 @@ func _ready() -> void:
 	vosn.screen_exited.connect(_on_vosn_screen_exited)
 
 	var obstacle : Area2D
-	if Main.level is Level and Main.level.chunk_speed >= 300:
+	await get_tree().create_timer(0.1).timeout # JAPIERDOLE XDDD
+	if Main.level is Level and Main.level.chunk_speed >= 220:
 
 		obstacle = obstacles.pick_random()
 
@@ -37,4 +38,4 @@ func _on_obstacle_body_entered(body: Node2D) -> void:
 
 	if body is Player:
 
-		get_tree().paused = true
+		SignalBus.player_collided.emit()

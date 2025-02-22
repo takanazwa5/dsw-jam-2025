@@ -2,7 +2,6 @@ class_name Level extends Node2D
 
 
 const CHUNK_SCENE : PackedScene = preload("res://features/chunk/chunk.tscn")
-
 const CHUNK_INITIAL_SPEED : int = 100
 const CHUNK_SPEED_INCREMENT : int = 40
 

@@ -9,3 +9,6 @@ signal jumping_state_entered
 
 @warning_ignore("unused_signal")
 signal sliding_state_entered
+
+@warning_ignore("unused_signal")
+signal player_collided

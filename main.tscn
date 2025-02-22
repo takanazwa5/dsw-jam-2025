@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjsgg2h5ou11a"]
+[gd_scene load_steps=7 format=3 uid="uid://bjsgg2h5ou11a"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_v65x7"]
 [ext_resource type="PackedScene" uid="uid://8grgyvjls8is" path="res://features/level/level.tscn" id="2_8862p"]
@@ -10,6 +10,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3f57e"]
 font_size = 22
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kj2nr"]
+font_size = 20
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -42,7 +47,7 @@ layout_mode = 2
 text = "ESC - quit
 F1 - debug panel
 [ - window mode
-R - reload"
+] - reload"
 label_settings = SubResource("LabelSettings_ywopq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -71,7 +76,9 @@ position = Vector2(100, 220)
 offset = Vector2(320, 180)
 zoom = Vector2(1.05, 1.05)
 
-[node name="Tutorial" type="Label" parent="."]
+[node name="Tutorials" type="Node" parent="."]
+
+[node name="Tutorial" type="Label" parent="Tutorials"]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -87,7 +94,7 @@ Press [SPACE] to start
 label_settings = SubResource("LabelSettings_3f57e")
 horizontal_alignment = 1
 
-[node name="JumpTutorial" type="Label" parent="."]
+[node name="JumpTutorial" type="Label" parent="Tutorials"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 5
@@ -102,7 +109,7 @@ text = "Press [SPACE] to jump"
 label_settings = SubResource("LabelSettings_3f57e")
 horizontal_alignment = 1
 
-[node name="SlideTutorial" type="Label" parent="."]
+[node name="SlideTutorial" type="Label" parent="Tutorials"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 5
@@ -116,3 +123,66 @@ grow_horizontal = 2
 text = "Hold [S] to slide or fall quicker when in air"
 label_settings = SubResource("LabelSettings_3f57e")
 horizontal_alignment = 1
+
+[node name="MoveTutorial" type="Label" parent="Tutorials"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.0
+offset_top = 134.0
+offset_right = 221.0
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "Hold [A] or [D] to move"
+label_settings = SubResource("LabelSettings_3f57e")
+horizontal_alignment = 1
+
+[node name="GameOverLabels" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="RichTextLabel" parent="GameOverLabels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -42.0
+offset_right = 154.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[outline_size=10][color=red][font_size=50][center][shake]GEJM OVER[/shake][/center][/font_size][/color][/outline_size]"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="RestartLabel" type="Label" parent="GameOverLabels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = 39.0
+offset_right = 90.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press [R] to restart"
+label_settings = SubResource("LabelSettings_kj2nr")

@@ -1,13 +1,14 @@
 class_name Player extends CharacterBody2D
 
 
-const SPEED : float = 300.0
+const SPEED : float = 150.0
 const ACCELERATION : float = 0.01
 const JUMP_VELOCITY : float = 500.0
 
 
 static var can_jump : bool = false
 static var can_slide : bool = false
+static var can_move : bool = false
 
 var gravity_multiplier : int = 1
 
@@ -18,6 +19,10 @@ var gravity_multiplier : int = 1
 
 
 func _ready() -> void:
+
+	can_jump = false
+	can_slide = false
+	can_move = false
 
 	Main.player = self
 	State.player = self
@@ -37,6 +42,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * gravity_multiplier * delta
 
 	#velocity.x = lerpf(velocity.x, SPEED, ACCELERATION)
+
+	var direction : float = Input.get_axis("walk_left", "walk_right")
+	velocity.x = direction * SPEED if can_move else 0.0
 
 	move_and_slide()
 

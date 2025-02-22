@@ -6,6 +6,7 @@ class_name SlidingState extends State
 @onready var sprite : AnimatedSprite2D = %Sprite
 @onready var running_collision : CollisionShape2D = %RunningCollision
 @onready var sliding_collision : CollisionShape2D = %SlidingCollision
+@onready var jumping_collision : CollisionShape2D = %JumpingCollision
 @onready var slide_timer : Timer = %SlideTimer
 
 
@@ -18,11 +19,11 @@ func enter() -> void:
 
 	SignalBus.sliding_state_entered.emit()
 	sprite.play(&"sliding")
-	running_collision.set_deferred("disabled", true)
 	sliding_collision.set_deferred("disabled", false)
 	slide_timer.start()
 	_tween_zoom(1, 1)
 	Main.level.chunk_speed += Level.CHUNK_SPEED_INCREMENT
+	Player.can_move = false
 
 
 func input_event(event: InputEvent) -> void:
@@ -39,10 +40,12 @@ func input_event(event: InputEvent) -> void:
 func exit() -> void:
 
 	sliding_collision.set_deferred("disabled", true)
-	running_collision.set_deferred("disabled", false)
 	slide_timer.stop()
 	_tween_zoom(1.05, 1.05)
 	Main.level.chunk_speed = Main.level.calculated_speed
+	if Main.move_tutorial_shown:
+
+		Player.can_move = true
 
 
 func _tween_zoom(x: float, y: float) -> void:

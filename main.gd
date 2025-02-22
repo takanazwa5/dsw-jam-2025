@@ -3,27 +3,38 @@ class_name Main extends Node
 
 static var player : Player
 static var level : Level
-
 static var tutorials_completed : bool = false
-static var time : float = 0.0
+static var dead : bool = false
+static var move_tutorial_shown : bool = false
 
 
 @onready var debug_info : Control = %DebugInfo
 @onready var tutorial : Label = %Tutorial
 @onready var jump_tutorial : Label = %JumpTutorial
 @onready var slide_tutorial : Label = %SlideTutorial
+@onready var move_tutorial : Label = %MoveTutorial
+@onready var game_over_labels : Control = %GameOverLabels
 
 
 func _ready() -> void:
+
+	tutorials_completed = false
+	dead = false
+	move_tutorial_shown = false
 
 	debug_info.visible = OS.is_debug_build()
 
 	SignalBus.idle_state_exited.connect(_on_idle_state_exited)
 	SignalBus.jumping_state_entered.connect(_on_jumping_state_entered)
 	SignalBus.sliding_state_entered.connect(_on_sliding_state_entered)
+	SignalBus.player_collided.connect(_on_player_collided)
 
 
 func _input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("restart") and dead:
+
+		get_tree().reload_current_scene()
 
 	if not OS.is_debug_build():
 
@@ -35,7 +46,7 @@ func _input(event: InputEvent) -> void:
 
 			get_tree().quit()
 
-		if event.physical_keycode == KEY_R:
+		if event.physical_keycode == KEY_BRACKETRIGHT:
 
 			get_tree().reload_current_scene()
 
@@ -53,6 +64,14 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 
 	DebugPanel.add_property(Engine.get_frames_per_second(), "FPS", 1)
+
+
+func game_over() -> void:
+
+	player.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	level.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	game_over_labels.show()
+	dead = true
 
 
 func _on_idle_state_exited() -> void:
@@ -79,3 +98,14 @@ func _on_sliding_state_entered() -> void:
 	slide_tutorial.hide()
 	Player.can_jump = true
 	tutorials_completed = true
+	await get_tree().create_timer(1.0).timeout
+	move_tutorial.show()
+	move_tutorial_shown = true
+	Player.can_move = true
+	await get_tree().create_timer(3.0).timeout
+	move_tutorial.hide()
+
+
+func _on_player_collided() -> void:
+
+	game_over()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs28liwog0cif"]
+[gd_scene load_steps=28 format=3 uid="uid://bs28liwog0cif"]
 
 [ext_resource type="Script" path="res://features/player/player.gd" id="1_6nbeu"]
 [ext_resource type="Texture2D" uid="uid://cvnjc3dx38q1k" path="res://features/player/character_idle.png" id="2_c4fqy"]
 [ext_resource type="Script" path="res://features/state_machine/state_machine.gd" id="2_ph7jy"]
 [ext_resource type="Texture2D" uid="uid://cauramtft0sas" path="res://features/player/character_running.png" id="3_7kiio"]
+[ext_resource type="Texture2D" uid="uid://jgtsuoo2clpl" path="res://features/player/character_jumping.png" id="3_8jtxy"]
 [ext_resource type="Script" path="res://features/player/states/running_state.gd" id="3_w8p1a"]
 [ext_resource type="Script" path="res://features/player/states/sliding_state.gd" id="4_4m18i"]
 [ext_resource type="Texture2D" uid="uid://i0jy1rnleqsr" path="res://features/player/character_slide.png" id="4_ir1gm"]
@@ -21,10 +22,6 @@ region = Rect2(82, 0, 82, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_druvb"]
 atlas = ExtResource("2_c4fqy")
 region = Rect2(0, 0, 82, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_af4fx"]
-atlas = ExtResource("3_7kiio")
-region = Rect2(574, 0, 82, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vx1cp"]
 atlas = ExtResource("3_7kiio")
@@ -90,7 +87,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_af4fx")
+"texture": ExtResource("3_8jtxy")
 }],
 "loop": true,
 "name": &"jumping",
@@ -143,13 +140,16 @@ size = Vector2(40, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2syhd"]
 size = Vector2(85.5, 53)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhs0"]
+size = Vector2(40, 86)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6nbeu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_outx6")
-animation = &"running"
+animation = &"jumping"
 autoplay = "idle"
 
 [node name="RunningCollision" type="CollisionShape2D" parent="."]
@@ -160,6 +160,12 @@ shape = SubResource("RectangleShape2D_v810s")
 unique_name_in_owner = true
 position = Vector2(1, 23)
 shape = SubResource("RectangleShape2D_2syhd")
+disabled = true
+
+[node name="JumpingCollision" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_uvhs0")
 disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

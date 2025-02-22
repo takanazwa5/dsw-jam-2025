@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2rle0tbttd7q"]
+[gd_scene load_steps=12 format=3 uid="uid://d2rle0tbttd7q"]
 
 [ext_resource type="Script" path="res://features/chunk/chunk.gd" id="1_5gbg4"]
 [ext_resource type="Texture2D" uid="uid://h2gmwv7b5uf2" path="res://icon.svg" id="1_ercl0"]
+[ext_resource type="Texture2D" uid="uid://bh523pdefpj60" path="res://features/chunk/background_1.png" id="2_6y5wj"]
 [ext_resource type="PackedScene" uid="uid://bs28liwog0cif" path="res://features/player/player.tscn" id="3_ex4in"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iicn6"]
@@ -29,7 +30,12 @@ size = Vector2(25, 25)
 position = Vector2(0, 360)
 script = ExtResource("1_5gbg4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(320, -180)
+texture = ExtResource("2_6y5wj")
+
+[node name="Floor" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(320, -25)
 scale = Vector2(5, 0.390625)
 texture = ExtResource("1_ercl0")
