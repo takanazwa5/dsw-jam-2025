@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 
 const SPEED : float = 150.0
 const ACCELERATION : float = 0.01
-const JUMP_VELOCITY : float = 500.0
+const JUMP_VELOCITY : float = 300.0
 
 
 static var can_jump : bool = false
@@ -16,6 +16,7 @@ var gravity_multiplier : int = 1
 @onready var jump_buffer : Timer = %JumpBuffer
 @onready var state_machine : StateMachine = %StateMachine
 @onready var sliding_state : SlidingState = %SlidingState
+@onready var jump_timer : Timer = %JumpTimer
 
 
 func _ready() -> void:

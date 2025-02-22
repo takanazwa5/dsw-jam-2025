@@ -11,6 +11,7 @@ var slided : bool = false
 @onready var running_collision : CollisionShape2D = %RunningCollision
 @onready var sliding_collision : CollisionShape2D = %SlidingCollision
 @onready var jumping_collision : CollisionShape2D = %JumpingCollision
+@onready var jump_timer : Timer = %JumpTimer
 
 
 func enter() -> void:
@@ -19,6 +20,7 @@ func enter() -> void:
 	sprite.play(&"jumping")
 	player.velocity.y = -Player.JUMP_VELOCITY
 	jumping_collision.set_deferred("disabled", false)
+	player.jump_timer.start()
 
 
 func input_event(event: InputEvent) -> void:
@@ -51,6 +53,12 @@ func physics_update(_delta: float) -> void:
 		else:
 
 			transition.emit(running_state)
+
+	else:
+
+		if Input.is_action_pressed("jump") and not player.jump_timer.is_stopped():
+
+			player.velocity.y = lerpf(player.velocity.y, -400, 0.25)
 
 
 func exit() -> void:
