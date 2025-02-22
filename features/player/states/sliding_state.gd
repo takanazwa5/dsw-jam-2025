@@ -22,6 +22,7 @@ func enter() -> void:
 	running_collision.set_deferred("disabled", true)
 	sliding_collision.set_deferred("disabled", false)
 	slide_timer.start()
+	_tween_zoom(1, 1)
 
 
 func input_event(event: InputEvent) -> void:
@@ -42,6 +43,13 @@ func exit() -> void:
 	sliding_collision.set_deferred("disabled", true)
 	running_collision.set_deferred("disabled", false)
 	slide_timer.stop()
+	_tween_zoom(1.05, 1.05)
+
+
+func _tween_zoom(x: float, y: float) -> void:
+
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(get_viewport().get_camera_2d(), "zoom", Vector2(x, y), 0.1)
 
 
 func _on_slide_timer_timeout() -> void:
