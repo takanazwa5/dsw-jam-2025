@@ -6,14 +6,19 @@ signal screen_exited()
 
 @onready var player_ref : CharacterBody2D = %PlayerRef
 @onready var vosn : VisibleOnScreenNotifier2D = %VOSN
-@onready var obstacles : Array[Area2D] = [%SmallObstacle, %BigObstacle, %VentObstacle]
+@onready var obstacles : Array[Area2D] = [
+	%SmallObstacle,
+	%BigObstacle,
+	%VentObstacle,
+	%CablesObstacle,
+	%OrbObstacle,
+]
 
 
 func _ready() -> void:
 
 	player_ref.hide()
 	vosn.screen_exited.connect(_on_vosn_screen_exited)
-
 	var obstacle : Area2D
 	obstacle = obstacles.pick_random()
 	obstacle.body_entered.connect(_on_obstacle_body_entered)
