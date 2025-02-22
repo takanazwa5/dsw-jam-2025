@@ -6,14 +6,20 @@ const ACCELERATION : float = 0.01
 const JUMP_VELOCITY : float = 500.0
 
 
+static var can_jump : bool = false
+static var can_slide : bool = false
+
 var gravity_multiplier : int = 1
 
 
 @onready var jump_buffer : Timer = %JumpBuffer
+@onready var state_machine : StateMachine = %StateMachine
+@onready var sliding_state : SlidingState = %SlidingState
 
 
 func _ready() -> void:
 
+	Main.player = self
 	State.player = self
 
 
@@ -37,5 +43,5 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 
-	DebugPanel.add_property(velocity.y, "velocity_y", 5)
-	DebugPanel.add_property(gravity_multiplier, "gravity_multiplier", 6)
+	DebugPanel.add_property(velocity.y, "velocity_y", 6)
+	DebugPanel.add_property(gravity_multiplier, "gravity_multiplier", 7)

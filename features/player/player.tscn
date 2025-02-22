@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://features/player/states/sliding_state.gd" id="4_4m18i"]
 [ext_resource type="Texture2D" uid="uid://i0jy1rnleqsr" path="res://features/player/character_slide.png" id="4_ir1gm"]
 [ext_resource type="Script" path="res://features/player/states/jumping_state.gd" id="5_a2lkt"]
+[ext_resource type="Script" path="res://features/player/states/idle_state.gd" id="9_i7qfi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l33x"]
 atlas = ExtResource("2_c4fqy")
@@ -122,7 +123,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"running",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,32 +137,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_hvsgl"]
-colors = PackedColorArray(0.538335, 0.815622, 1, 1, 1, 0.937532, 0.219805, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jbmrg"]
-gradient = SubResource("Gradient_hvsgl")
-width = 40
-height = 100
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v810s"]
 size = Vector2(40, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2syhd"]
+size = Vector2(85.5, 53)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6nbeu")
 
-[node name="RunningSprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_outx6")
-animation = &"jumping"
+animation = &"running"
 autoplay = "idle"
-
-[node name="SlidingSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, 30)
-rotation = 1.5708
-texture = SubResource("GradientTexture2D_jbmrg")
 
 [node name="RunningCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -169,15 +158,14 @@ shape = SubResource("RectangleShape2D_v810s")
 
 [node name="SlidingCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 30)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_v810s")
+position = Vector2(1, 23)
+shape = SubResource("RectangleShape2D_2syhd")
 disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
 script = ExtResource("2_ph7jy")
-initial_state = NodePath("RunningState")
+initial_state = NodePath("IdleState")
 
 [node name="RunningState" type="Node" parent="StateMachine"]
 unique_name_in_owner = true
@@ -190,6 +178,10 @@ script = ExtResource("4_4m18i")
 [node name="JumpingState" type="Node" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("5_a2lkt")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("9_i7qfi")
 
 [node name="SlideTimer" type="Timer" parent="."]
 unique_name_in_owner = true

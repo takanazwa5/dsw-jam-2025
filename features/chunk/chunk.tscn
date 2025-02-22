@@ -1,10 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2rle0tbttd7q"]
+[gd_scene load_steps=11 format=3 uid="uid://d2rle0tbttd7q"]
 
 [ext_resource type="Script" path="res://features/chunk/chunk.gd" id="1_5gbg4"]
 [ext_resource type="Texture2D" uid="uid://h2gmwv7b5uf2" path="res://icon.svg" id="1_ercl0"]
+[ext_resource type="PackedScene" uid="uid://bs28liwog0cif" path="res://features/player/player.tscn" id="3_ex4in"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iicn6"]
 size = Vector2(640, 25)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kaeil"]
+size = Vector2(70, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h48f4"]
+size = Vector2(70, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f6k0x"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8f64"]
+size = Vector2(50, 50)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w6jvb"]
+size = Vector2(25, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko6cj"]
+size = Vector2(25, 25)
 
 [node name="Chunk" type="StaticBody2D"]
 position = Vector2(0, 360)
@@ -22,3 +41,45 @@ shape = SubResource("RectangleShape2D_iicn6")
 [node name="VOSN" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
 rect = Rect2(0, -50, 640, 50)
+
+[node name="LongObstacle" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(502, -35)
+monitoring = false
+
+[node name="Sprite2D" type="Sprite2D" parent="LongObstacle"]
+texture = SubResource("PlaceholderTexture2D_kaeil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LongObstacle"]
+shape = SubResource("RectangleShape2D_h48f4")
+
+[node name="BigObstacle" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(502, -50)
+monitoring = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BigObstacle"]
+texture = SubResource("PlaceholderTexture2D_f6k0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigObstacle"]
+shape = SubResource("RectangleShape2D_d8f64")
+
+[node name="Obstacle" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(502, -38)
+monitoring = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+texture = SubResource("PlaceholderTexture2D_w6jvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+shape = SubResource("RectangleShape2D_ko6cj")
+
+[node name="PlayerRef" parent="." instance=ExtResource("3_ex4in")]
+unique_name_in_owner = true
+process_mode = 4
+position = Vector2(389, -75)
+script = null
