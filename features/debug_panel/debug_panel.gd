@@ -15,7 +15,11 @@ func _ready() -> void:
 	label_settings.outline_size = 10
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
+
+	if not OS.is_debug_build():
+
+		return
 
 	if event is InputEventKey and event.pressed and not event.echo:
 
