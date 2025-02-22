@@ -6,7 +6,7 @@ signal screen_exited()
 
 @onready var player_ref : CharacterBody2D = %PlayerRef
 @onready var vosn : VisibleOnScreenNotifier2D = %VOSN
-@onready var obstacles : Array[Area2D] = [%Obstacle, %BigObstacle, %LongObstacle]
+@onready var obstacles : Array[Area2D] = [%SmallObstacle, %BigObstacle, %VentObstacle]
 
 
 func _ready() -> void:
@@ -15,15 +15,7 @@ func _ready() -> void:
 	vosn.screen_exited.connect(_on_vosn_screen_exited)
 
 	var obstacle : Area2D
-	await get_tree().create_timer(0.1).timeout # JAPIERDOLE XDDD
-	if Main.level is Level and Main.level.chunk_speed >= 220:
-
-		obstacle = obstacles.pick_random()
-
-	else:
-
-		obstacle = obstacles[0]
-
+	obstacle = obstacles.pick_random()
 	obstacle.body_entered.connect(_on_obstacle_body_entered)
 	obstacle.visible = true if Main.tutorials_completed else false
 	obstacle.monitoring = obstacle.visible
