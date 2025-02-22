@@ -9,9 +9,19 @@ const JUMP_VELOCITY : float = 500.0
 var gravity_multiplier : int = 1
 
 
+@onready var jump_buffer : Timer = %JumpBuffer
+
+
 func _ready() -> void:
 
 	State.player = self
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("jump"):
+
+		jump_buffer.start()
 
 
 func _physics_process(delta: float) -> void:

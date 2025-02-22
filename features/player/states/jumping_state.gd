@@ -3,6 +3,7 @@ class_name JumpingState extends State
 
 @onready var running_state : RunningState = %RunningState
 @onready var sliding_state : SlidingState = %SlidingState
+@onready var jump_buffer : Timer = %JumpBuffer
 
 
 func enter() -> void:
@@ -26,7 +27,11 @@ func physics_update(_delta: float) -> void:
 
 	if player.is_on_floor():
 
-		if Input.is_action_pressed("slide"):
+		if Input.is_action_pressed("jump") and not jump_buffer.is_stopped():
+
+			transition.emit(self)
+
+		elif Input.is_action_pressed("slide"):
 
 			transition.emit(sliding_state)
 
