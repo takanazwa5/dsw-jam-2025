@@ -42,6 +42,7 @@ func _input(event: InputEvent) -> void:
 
 	elif event.is_action_pressed("quit") and dead:
 
+		tutorials_completed = false
 		get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
 
 	if not OS.is_debug_build():
