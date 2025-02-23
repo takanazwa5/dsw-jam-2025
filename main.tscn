@@ -1,16 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjsgg2h5ou11a"]
+[gd_scene load_steps=11 format=3 uid="uid://bjsgg2h5ou11a"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_v65x7"]
 [ext_resource type="PackedScene" uid="uid://8grgyvjls8is" path="res://features/level/level.tscn" id="2_8862p"]
 [ext_resource type="PackedScene" uid="uid://bs28liwog0cif" path="res://features/player/player.tscn" id="3_dp2nl"]
+[ext_resource type="FontFile" uid="uid://ck6d4fggkohhb" path="res://assets/Retro Gaming.ttf" id="4_tw26x"]
 [ext_resource type="Texture2D" uid="uid://m35hnhc6spux" path="res://features/main_menu/button.png" id="4_uxr6f"]
+[ext_resource type="AudioStream" uid="uid://de4lcybmgy7cc" path="res://assets/bg_music.wav" id="5_7iwma"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3f57e"]
-font_size = 22
+font = ExtResource("4_tw26x")
+font_size = 24
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kj2nr"]
+font = ExtResource("4_tw26x")
 font_size = 20
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -20,6 +24,7 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkg3g"]
+font = ExtResource("4_tw26x")
 font_size = 24
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -135,14 +140,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -42.0
-offset_right = 154.0
-offset_bottom = 35.0
+offset_left = -198.0
+offset_top = -39.0
+offset_right = 199.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[outline_size=10][color=red][font_size=50][center][shake]GEJM OVER[/shake][/center][/font_size][/color][/outline_size]"
+text = "[font=\"assets/Retro Gaming.ttf\"][outline_size=10][color=red][font_size=50][center][shake]GEJM OVER[/shake][/center][/font_size][/color][/outline_size][/font]"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
@@ -220,3 +225,7 @@ grow_vertical = 2
 text = "0"
 label_settings = SubResource("LabelSettings_jkg3g")
 horizontal_alignment = 1
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7iwma")
+autoplay = true

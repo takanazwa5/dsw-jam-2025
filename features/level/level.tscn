@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://8grgyvjls8is"]
+[gd_scene load_steps=9 format=3 uid="uid://8grgyvjls8is"]
 
 [ext_resource type="Script" path="res://features/level/level.gd" id="1_oef01"]
 [ext_resource type="PackedScene" uid="uid://d2rle0tbttd7q" path="res://features/chunk/chunk.tscn" id="2_7m6ce"]
 [ext_resource type="Texture2D" uid="uid://daf46yxdjwgt" path="res://features/level/core.png" id="3_183rr"]
+[ext_resource type="AudioStream" uid="uid://b7kqnyx6bgxo2" path="res://assets/core_zap.wav" id="4_68i6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ufwu"]
 atlas = ExtResource("3_183rr")
@@ -52,4 +53,9 @@ z_index = 1
 position = Vector2(83, 184)
 sprite_frames = SubResource("SpriteFrames_ul6at")
 autoplay = "default"
-frame_progress = 0.379384
+frame_progress = 0.720064
+
+[node name="CoreZap" type="AudioStreamPlayer" parent="Core"]
+stream = ExtResource("4_68i6f")
+volume_db = -15.0
+autoplay = true

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://de4lcybmgy7cc"
-path="res://.godot/imported/bg_music.wav-092788bd99f3fd617ddc622fb0f3b63d.sample"
+path="res://.godot/imported/bg_music.wav-36cd2af2b9b04f50f9c82efdf1f10037.sample"
 
 [deps]
 
-source_file="res://features/level/bg_music.wav"
-dest_files=["res://.godot/imported/bg_music.wav-092788bd99f3fd617ddc622fb0f3b63d.sample"]
+source_file="res://assets/bg_music.wav"
+dest_files=["res://.godot/imported/bg_music.wav-36cd2af2b9b04f50f9c82efdf1f10037.sample"]
 
 [params]
 
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

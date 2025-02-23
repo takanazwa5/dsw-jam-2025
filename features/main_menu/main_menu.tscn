@@ -1,15 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://t2vwkfhu3tse"]
+[gd_scene load_steps=8 format=3 uid="uid://t2vwkfhu3tse"]
 
 [ext_resource type="Script" path="res://features/main_menu/main_menu.gd" id="1_6hcrl"]
 [ext_resource type="Texture2D" uid="uid://w0xlh7u8lp35" path="res://features/main_menu/main_menu_splash.png" id="1_pcphv"]
 [ext_resource type="Texture2D" uid="uid://c5148paygtm07" path="res://features/main_menu/title_ramka.png" id="3_6hv1y"]
 [ext_resource type="Texture2D" uid="uid://m35hnhc6spux" path="res://features/main_menu/button.png" id="4_rkupw"]
+[ext_resource type="FontFile" uid="uid://ck6d4fggkohhb" path="res://assets/Retro Gaming.ttf" id="5_wbtkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cpusk"]
-font_size = 100
+font = ExtResource("5_wbtkp")
+font_size = 80
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v4prj"]
+font = ExtResource("5_wbtkp")
 font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
