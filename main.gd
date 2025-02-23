@@ -34,6 +34,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("restart") and dead:
 
+		tutorials_completed = false
 		get_tree().reload_current_scene()
 
 	if not OS.is_debug_build():

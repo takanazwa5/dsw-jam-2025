@@ -20,6 +20,7 @@ func _ready() -> void:
 	var obstacle : Area2D
 	obstacle = obstacles.pick_random()
 	obstacle.body_entered.connect(_on_obstacle_body_entered)
+	#print(Main.tutorials_completed)
 	obstacle.visible = true if Main.tutorials_completed else false
 	obstacle.monitoring = obstacle.visible
 
