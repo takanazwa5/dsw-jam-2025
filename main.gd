@@ -87,6 +87,7 @@ func game_over() -> void:
 
 func _on_idle_state_exited() -> void:
 
+	level.hide_core()
 	tutorial.hide()
 	await get_tree().create_timer(1.0).timeout
 	jump_tutorial.show()

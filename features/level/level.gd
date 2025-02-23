@@ -14,6 +14,7 @@ var calculated_speed : int = CHUNK_INITIAL_SPEED
 
 @onready var chunks_container : Node = %ChunksContainer
 @onready var chunks : Array[Chunk] = [%Chunk, %Chunk2]
+@onready var core : AnimatedSprite2D = %Core
 
 
 func _ready() -> void:
@@ -34,6 +35,14 @@ func _process(delta: float) -> void:
 	for chunk : Chunk in chunks_container.get_children():
 
 		chunk.position.x -= chunk_speed * delta
+
+
+func hide_core() -> void:
+
+	var tween : Tween = core.create_tween()
+	tween.tween_property(core, "position", Vector2(-150, core.position.y), 1.0)
+	await tween.finished
+	core.queue_free()
 
 
 func _on_chunk_screen_exited() -> void:
