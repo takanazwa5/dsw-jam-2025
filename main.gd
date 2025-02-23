@@ -17,6 +17,7 @@ static var move_tutorial_shown : bool = false
 @onready var slide_tutorial : Label = %SlideTutorial
 @onready var move_tutorial : Label = %MoveTutorial
 @onready var game_over_labels : Control = %GameOverLabels
+@onready var points_label : Label = %PointsLabel
 
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _ready() -> void:
 	SignalBus.jumping_state_entered.connect(_on_jumping_state_entered)
 	SignalBus.sliding_state_entered.connect(_on_sliding_state_entered)
 	SignalBus.player_collided.connect(_on_player_collided)
+	SignalBus.points_changed.connect(_on_points_changed)
 
 
 func _input(event: InputEvent) -> void:
@@ -118,3 +120,8 @@ func _on_sliding_state_entered() -> void:
 func _on_player_collided() -> void:
 
 	game_over()
+
+
+func _on_points_changed(amount: int) -> void:
+
+	points_label.text = str(amount)

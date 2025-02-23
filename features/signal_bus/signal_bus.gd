@@ -12,3 +12,6 @@ signal sliding_state_entered
 
 @warning_ignore("unused_signal")
 signal player_collided
+
+@warning_ignore("unused_signal")
+signal points_changed(amount: int)

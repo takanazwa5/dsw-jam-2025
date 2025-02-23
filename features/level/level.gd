@@ -44,7 +44,10 @@ func _on_chunk_screen_exited() -> void:
 	chunks.append(new_chunk)
 	chunks_container.add_child(new_chunk)
 	chunks.pop_front().queue_free()
-	chunk_counter += 1 if Main.tutorials_completed else chunk_counter
+	if Main.tutorials_completed:
+
+		chunk_counter += 1
+		SignalBus.points_changed.emit(chunk_counter)
 
 	if chunk_counter == next_speed_up_chunk:
 

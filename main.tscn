@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjsgg2h5ou11a"]
+[gd_scene load_steps=9 format=3 uid="uid://bjsgg2h5ou11a"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_v65x7"]
 [ext_resource type="PackedScene" uid="uid://8grgyvjls8is" path="res://features/level/level.tscn" id="2_8862p"]
 [ext_resource type="PackedScene" uid="uid://bs28liwog0cif" path="res://features/player/player.tscn" id="3_dp2nl"]
+[ext_resource type="Texture2D" uid="uid://m35hnhc6spux" path="res://features/main_menu/button.png" id="4_uxr6f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3f57e"]
 font_size = 22
@@ -15,6 +16,11 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ywopq"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jkg3g"]
+font_size = 24
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -188,3 +194,29 @@ F1 - debug panel
 [ - window mode
 ] - reload"
 label_settings = SubResource("LabelSettings_ywopq")
+
+[node name="PointsCounter" type="NinePatchRect" parent="."]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 251.0
+offset_bottom = 80.0
+texture = ExtResource("4_uxr6f")
+region_rect = Rect2(0, 0, 208, 37)
+patch_margin_left = 50
+patch_margin_right = 50
+
+[node name="PointsLabel" type="Label" parent="PointsCounter"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = 8.0
+offset_right = -42.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_jkg3g")
+horizontal_alignment = 1
