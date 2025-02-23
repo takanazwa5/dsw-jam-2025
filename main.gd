@@ -47,6 +47,10 @@ func _input(event: InputEvent) -> void:
 		tutorials_completed = false
 		get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
 
+	elif event.is_action_pressed("close_game"):
+
+		get_tree().quit()
+
 	if not OS.is_debug_build():
 
 		return
