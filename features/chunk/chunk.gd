@@ -1,10 +1,9 @@
 class_name Chunk extends StaticBody2D
 
 
-signal screen_exited()
+signal screen_exited
 
 
-@onready var player_ref : CharacterBody2D = %PlayerRef
 @onready var vosn : VisibleOnScreenNotifier2D = %VOSN
 @onready var obstacles : Array[Area2D] = [
 	%SmallObstacle,
@@ -17,7 +16,6 @@ signal screen_exited()
 
 func _ready() -> void:
 
-	player_ref.hide()
 	vosn.screen_exited.connect(_on_vosn_screen_exited)
 	var obstacle : Area2D
 	obstacle = obstacles.pick_random()

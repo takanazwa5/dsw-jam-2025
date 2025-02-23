@@ -1,8 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2rle0tbttd7q"]
+[gd_scene load_steps=37 format=3 uid="uid://d2rle0tbttd7q"]
 
 [ext_resource type="Script" path="res://features/chunk/chunk.gd" id="1_5gbg4"]
 [ext_resource type="Texture2D" uid="uid://bh523pdefpj60" path="res://features/chunk/background_1.png" id="2_6y5wj"]
-[ext_resource type="PackedScene" uid="uid://bs28liwog0cif" path="res://features/player/player.tscn" id="3_ex4in"]
 [ext_resource type="Texture2D" uid="uid://cg85xqrb3tjkg" path="res://features/chunk/floor.png" id="3_hmnt7"]
 [ext_resource type="Texture2D" uid="uid://c5v7iqnom67dt" path="res://features/chunk/vent.png" id="4_iyqme"]
 [ext_resource type="Texture2D" uid="uid://50ukbn3i8rvc" path="res://features/chunk/big_cube.png" id="5_rahjr"]
@@ -204,7 +203,7 @@ shape = SubResource("RectangleShape2D_iicn6")
 
 [node name="VOSN" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
-rect = Rect2(0, -50, 640, 50)
+rect = Rect2(0, -360, 640, 360)
 
 [node name="VentObstacle" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -257,7 +256,7 @@ monitoring = false
 [node name="Sprite2D" type="AnimatedSprite2D" parent="CablesObstacle"]
 sprite_frames = SubResource("SpriteFrames_ccbvj")
 autoplay = "default"
-frame_progress = 0.536249
+frame_progress = 0.293633
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CablesObstacle"]
 position = Vector2(0, -1)
@@ -288,7 +287,7 @@ monitoring = false
 [node name="Sprite2D" type="AnimatedSprite2D" parent="OrbObstacle"]
 sprite_frames = SubResource("SpriteFrames_t485y")
 autoplay = "default"
-frame_progress = 0.260782
+frame_progress = 0.0181654
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrbObstacle"]
 position = Vector2(0, -1)
@@ -299,9 +298,3 @@ libraries = {
 "": SubResource("AnimationLibrary_4cchu")
 }
 autoplay = "orb"
-
-[node name="PlayerRef" parent="." instance=ExtResource("3_ex4in")]
-unique_name_in_owner = true
-process_mode = 4
-position = Vector2(389, -75)
-script = null

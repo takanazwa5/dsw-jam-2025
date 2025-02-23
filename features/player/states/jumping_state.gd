@@ -56,7 +56,7 @@ func physics_update(_delta: float) -> void:
 
 	else:
 
-		if Input.is_action_pressed("jump") and not player.jump_timer.is_stopped():
+		if Input.is_action_pressed("jump") and not player.jump_timer.is_stopped() and player.velocity.y < 0:
 
 			player.velocity.y = lerpf(player.velocity.y, -400, 0.25)
 
