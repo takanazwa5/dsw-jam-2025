@@ -1,6 +1,9 @@
 class_name Main extends Node
 
 
+const MAIN_MENU_SCENE : PackedScene = preload("res://features/main_menu/main_menu.tscn")
+
+
 static var player : Player
 static var level : Level
 static var tutorials_completed : bool = false
@@ -39,7 +42,7 @@ func _input(event: InputEvent) -> void:
 
 	elif event.is_action_pressed("quit") and dead:
 
-		get_tree().change_scene_to_file("res://features/main_menu/main_menu.tscn")
+		get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
 
 	if not OS.is_debug_build():
 
