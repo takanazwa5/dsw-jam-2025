@@ -60,7 +60,7 @@ func _on_chunk_screen_exited() -> void:
 
 	if chunk_counter == next_speed_up_chunk:
 
-		next_speed_up_chunk = floor(next_speed_up_chunk * 1.5) + 1
+		next_speed_up_chunk = floor(next_speed_up_chunk * 1.7) + 1
 		calculated_speed = chunk_speed + CHUNK_SPEED_INCREMENT
 
 		if not Main.player.state_machine.state == Main.player.sliding_state:

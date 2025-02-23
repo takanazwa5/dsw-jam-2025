@@ -8,8 +8,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_cpusk"]
 font = ExtResource("5_wbtkp")
-font_size = 80
-outline_size = 30
+font_size = 54
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v4prj"]
@@ -103,7 +103,7 @@ offset_right = 37.5
 offset_bottom = -205.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "VOLTRUN"
+text = "VOLTRUNNER"
 label_settings = SubResource("LabelSettings_cpusk")
 
 [node name="PlayLabel" type="Label" parent="."]

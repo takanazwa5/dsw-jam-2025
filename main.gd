@@ -125,4 +125,4 @@ func _on_player_collided() -> void:
 
 func _on_points_changed(amount: int) -> void:
 
-	points_label.text = str(amount)
+	points_label.text = str(amount * 100 + randi_range(0, 99))

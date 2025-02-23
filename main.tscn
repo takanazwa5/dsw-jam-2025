@@ -70,7 +70,7 @@ offset_top = 100.0
 offset_right = 172.0
 offset_bottom = 199.0
 grow_horizontal = 2
-text = "Run!
+text = "Run away from The Core!
 Press [SPACE] to start
 (There might be some obstacles)"
 label_settings = SubResource("LabelSettings_3f57e")
