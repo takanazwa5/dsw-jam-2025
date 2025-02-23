@@ -30,6 +30,7 @@ func input_event(event: InputEvent) -> void:
 		if not slided:
 
 			player.velocity.y = 100
+			slided = true
 
 		player.gravity_multiplier = 5
 
