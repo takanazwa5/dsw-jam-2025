@@ -37,6 +37,10 @@ func _input(event: InputEvent) -> void:
 		tutorials_completed = false
 		get_tree().reload_current_scene()
 
+	elif event.is_action_pressed("quit") and dead:
+
+		get_tree().change_scene_to_file("res://features/main_menu/main_menu.tscn")
+
 	if not OS.is_debug_build():
 
 		return
